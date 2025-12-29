@@ -1,0 +1,166 @@
+# OWASP Top 10:2021
+...
+## Getting Started
+
+
+Start with the [Introduction](https://owasp.org/Top10/2021/A00_2021_Introduction/) to learn about the OWASP Top 10:2021.
+
+
+...
+...
+# OWASP Top 10:2021
+...
+## Navigation
+...
+### The Top 10:2021 List
+
+
+1. [A01 Broken Access Control](https://owasp.org/Top10/2021/A01_2021-Broken_Access_Control/)
+2. [A02 Cryptographic Failures](https://owasp.org/Top10/2021/A02_2021-Cryptographic_Failures/)
+3. [A03 Injection](https://owasp.org/Top10/2021/A03_2021-Injection/)
+4. [A04 Insecure Design](https://owasp.org/Top10/2021/A04_2021-Insecure_Design/)
+5. [A05 Security Misconfiguration](https://owasp.org/Top10/2021/A05_2021-Security_Misconfiguration/)
+6. [A06 Vulnerable and Outdated Components](https://owasp.org/Top10/2021/A06_2021-Vulnerable_and_Outdated_Components/)
+...
+...
+# OWASP Top 10:2021
+...
+## Navigation
+...
+### The Top 10:2021 List
+...
+7. [A07 Identification and Authentication Failures](https://owasp.org/Top10/2021/A07_2021-Identification_and_Authentication_Failures/)
+8. [A08 Software and Data Integrity Failures](https://owasp.org/Top10/2021/A08_2021-Software_and_Data_Integrity_Failures/)
+9. [A09 Security Logging and Monitoring Failures](https://owasp.org/Top10/2021/A09_2021-Security_Logging_and_Monitoring_Failures/)
+10. [A10 Server Side Request Forgery (SSRF)](https://owasp.org/Top10/2021/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/)
+
+
+Looking for the 2025 Release Candidate? Visit [https://owasp.org/Top10/2025/](https://owasp.org/Top10/2025/)
+...
+...
+# OWASP Top 10:2021
+...
+## Navigation
+...
+### The Top 10:2021 List
+...
+ © Copyright 2021-2025 - OWASP Top 10 Team - This work is licensed under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/deed.en_US).Made with [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) 
+...
+...
+# OWASP Top 10:2021
+...
+## Additional Links
+- [en - English](https://owasp.org/Top10/2021/)
+- [ar - العربية](https://owasp.org/Top10/2021/ar/)
+- [de - Deutsch](https://owasp.org/Top10/2021/de/)
+- [es - Español](https://owasp.org/Top10/2021/es/)
+- [fr - Français](https://owasp.org/Top10/2021/fr/)
+- [id - Indonesian](https://owasp.org/Top10/2021/id/)
+- [it - Italiano](https://owasp.org/Top10/2021/it/)
+- [ja - 日本語](https://owasp.org/Top10/2021/ja/)
+- [pt-BR - Português (Brasil)](https://owasp.org/Top10/2021/pt-BR/)
+- [tr - Türkçe](https://owasp.org/Top10/2021/tr/)
+...
+...
+# OWASP Top 10:2021
+...
+## Additional Links
+...
+- [zh-Hant - 简体中文](https://owasp.org/Top10/2021/zh-Hant/)
+- [zh-TW - 繁體中文](https://owasp.org/Top10/2021/zh-TW/)
+- [OWASP Top 10:2021](https://owasp.org/Top10/2021/) - OWASP Top 10:2021
+- [OWASP/Top10](https://github.com/OWASP/Top10) - Go to repository
+- [Getting Started](https://owasp.org/Top10/2021/#getting-started)
+- [Navigation](https://owasp.org/Top10/2021/#navigation)
+- [The Top 10:2021 List](https://owasp.org/Top10/2021/#the-top-102021-list)
+- [Introduction](https://owasp.org/Top10/2021/A00_2021_Introduction/)
+...
+...
+# OWASP Top 10:2021
+...
+## Additional Links
+...
+- [Notice](https://owasp.org/Top10/2021/0x00_2021-notice/)
+- [How to use the OWASP Top 10 as a standard](https://owasp.org/Top10/2021/A00_2021_How_to_use_the_OWASP_Top_10_as_a_standard/)
+- [How to start an AppSec program with the OWASP Top 10](https://owasp.org/Top10/2021/A00_2021-How_to_start_an_AppSec_program_with_the_OWASP_Top_10/)
+- [About OWASP](https://owasp.org/Top10/2021/0x01_2021-about-owasp/)
+- [A01 Broken Access Control](https://owasp.org/Top10/2021/A01_2021-Broken_Access_Control/)
+- [A02 Cryptographic Failures](https://owasp.org/Top10/2021/A02_2021-Cryptographic_Failures/)
+...
+...
+# OWASP Top 10:2021
+...
+## Additional Links
+...
+- [A03 Injection](https://owasp.org/Top10/2021/A03_2021-Injection/)
+- [A04 Insecure Design](https://owasp.org/Top10/2021/A04_2021-Insecure_Design/)
+- [A05 Security Misconfiguration](https://owasp.org/Top10/2021/A05_2021-Security_Misconfiguration/)
+- [A06 Vulnerable and Outdated Components](https://owasp.org/Top10/2021/A06_2021-Vulnerable_and_Outdated_Components/)
+- [A07 Identification and Authentication Failures](https://owasp.org/Top10/2021/A07_2021-Identification_and_Authentication_Failures/)
+- [A08 Software and Data Integrity Failures](https://owasp.org/Top10/2021/A08_2021-Software_and_Data_Integrity_Failures/)
+...
+...
+# OWASP Top 10:2021
+...
+## Additional Links
+...
+- [A09 Security Logging and Monitoring Failures](https://owasp.org/Top10/2021/A09_2021-Security_Logging_and_Monitoring_Failures/)
+- [A10 Server Side Request Forgery (SSRF)](https://owasp.org/Top10/2021/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/)
+- [Next Steps](https://owasp.org/Top10/2021/A11_2021-Next_Steps/)
+...
+# OWASP Top 10:2021
+
+
+![OWASP Top 10 Logo](https://owasp.org/Top10/2021/assets/TOP_10_logo_Final_Logo_Colour-SMALL.png)
+
+
+
+
+Welcome to the OWASP Top 10:2021 documentation.
+
+
+The OWASP Top 10 is a standard awareness document for developers and web
+application security. It represents a broad consensus about the most critical security
+risks to web applications.
+
+
+Globally recognized by developers as the first step towards more secure coding.
+
+
+Companies should adopt this document and start the process of ensuring that
+their web applications minimize these risks. Using the OWASP Top 10 is perhaps the
+most effective first step towards changing the software development culture
+within your organization into one that produces more secure code.
+...
+...
+# OWASP Top 10:2021
+...
+[Edit on GitHub](https://github.com/OWASP/www-project-top-ten/blob/master/index.md)[Watch on GitHub](https://github.com/owasp/www-project-top-ten/subscription)[Star on GitHub](https://github.com/OWASP/www-project-top-ten) The OWASP® Foundation works to improve the security of software through its community-led open source
+software projects, hundreds of chapters worldwide, tens of thousands of
+members, and by hosting local and global conferences.
+### Project Information
+...
+### Downloads or Social Links
+...
+### Social
+...
+### Code Repository
+...
+### Leaders
+...
+### Upcoming OWASP Global Events
+...
+## A selection of our Corporate Supporters
+ ...
+## Additional Links
+...
+ 
+Please support the OWASP mission to improve software security through open
+source initiatives and community education. [Donate Now!](https://owasp.org/donate/)
+
+close announcement   
+This website uses cookies to analyze our traffic and only share that information
+with our analytics partners.
+
+[Accept](#) x
+# OWASP Top 10:2021
