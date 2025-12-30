@@ -12,4 +12,16 @@
 - Understood trade-offs between chunk size and semantic retrieval
 - Prepared security documents for embedding and search
 
+## Hour 3 — Embeddings & Semantic Retrieval
 
+- Learned how embeddings enable semantic search over security policies
+- Implemented in-memory vector indexing for RAG
+- Used cosine similarity to retrieve relevant policy chunks
+- Understood why keyword search fails for security questions
+
+## Hour 4 — Secure Prompt Design & Hallucination Control
+
+- Engineered a strict system prompt to constrain AI behavior to provided context
+- Implemented structured JSON output for predictable frontend integration
+- Integrated a similarity threshold in the backend to prevent hallucinations on out-of-scope queries
+- Learned to use context injection for Retrieval-Augmented Generation (RAG)
