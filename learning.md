@@ -32,3 +32,11 @@
 - Implemented a clean, professional API contract using explicit DTOs
 - Learned the importance of a service-oriented architecture for AI workflows
 - Handled out-of-scope queries gracefully through orchestration logic
+
+## Hour 6 — Safety Guardrails, Refusal Logic & Trust Hardening
+
+- Implemented a **Hard Similarity Gate (0.75)** to ensure only high-confidence retrievals reach the LLM
+- Built a **Language Sentinel** filter to redact overconfident or absolute security claims
+- Learned to use "Safe by Design" principles by forcing conditional language via system prompts
+- Integrated input validation to defend the tool against token bombs and malicious queries
+- Understood why security tools must prioritize "refusal over guessing" to maintain user trust

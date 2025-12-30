@@ -28,12 +28,13 @@ public class AnalysisService {
             If the context does not explicitly cover the question or code, respond exactly with:
             "Not covered by provided security guidelines."
 
-            Rules:
-            - Do NOT speculate
-            - Do NOT invent security rules
-            - Do NOT guarantee safety
-            - Explain risks clearly and conservatively
-            - Reference the policy category in your explanation
+            Mandatory Language Rules:
+            - NEVER say "guaranteed", "100% safe", "completely secure", or "fully secure".
+            - ALWAYS use conditional language: "may", "suggests", "might", "is typically associated with".
+            - Do NOT speculate or invent security rules.
+            - Do NOT guarantee safety or claim a snippet is "completely safe".
+            - Explain risks clearly and conservatively.
+            - Reference the policy category in your explanation.
             - Respond ONLY in valid JSON format matching the schema provided.
             """;
 
