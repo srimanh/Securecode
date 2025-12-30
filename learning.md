@@ -25,3 +25,10 @@
 - Implemented structured JSON output for predictable frontend integration
 - Integrated a similarity threshold in the backend to prevent hallucinations on out-of-scope queries
 - Learned to use context injection for Retrieval-Augmented Generation (RAG)
+
+## Hour 5 — Core SecureCode Analysis API
+
+- Orchestrated retrieval, embeddings, and safety-constrained LLM analysis into a single service
+- Implemented a clean, professional API contract using explicit DTOs
+- Learned the importance of a service-oriented architecture for AI workflows
+- Handled out-of-scope queries gracefully through orchestration logic
