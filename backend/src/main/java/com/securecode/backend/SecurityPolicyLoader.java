@@ -6,17 +6,30 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
+import jakarta.annotation.PostConstruct;
 
 @Service
 public class SecurityPolicyLoader {
+
+    @Autowired
+    private EmbeddingService embeddingService;
+
+    @Autowired
+    private VectorStoreService vectorStoreService;
+
+    @PostConstruct
+    public void init() {
+        loadAndChunkPolicies();
+    }
 
     public List<PolicyChunk> loadAndChunkPolicies() {
         List<PolicyChunk> chunks = new ArrayList<>();
 
         // Load documents
-        String[] files = {"owasp-top-10.txt", "owasp-injection.txt", "owasp-cryptographic-failures.txt"};
+        String[] files = { "owasp-top-10.txt", "owasp-injection.txt", "owasp-cryptographic-failures.txt" };
 
         for (String file : files) {
             try {
@@ -28,6 +41,11 @@ public class SecurityPolicyLoader {
                     policyChunk.setSource("OWASP");
                     policyChunk.setCategory(assignCategory(chunk));
                     policyChunk.setSeverity(assignSeverity(chunk));
+
+                    // Generate embedding and store in VectorStore
+                    float[] embedding = embeddingService.getEmbedding(chunk);
+                    vectorStoreService.addPolicyEmbedding(policyChunk, embedding);
+
                     chunks.add(policyChunk);
                 }
             } catch (IOException e) {
@@ -74,7 +92,8 @@ public class SecurityPolicyLoader {
     private String assignCategory(String text) {
         if (text.toLowerCase().contains("sql")) {
             return "SQL_INJECTION";
-        } else if (text.toLowerCase().contains("password") || text.toLowerCase().contains("api key") || text.toLowerCase().contains("hardcoded")) {
+        } else if (text.toLowerCase().contains("password") || text.toLowerCase().contains("api key")
+                || text.toLowerCase().contains("hardcoded")) {
             return "SECRETS";
         } else if (text.toLowerCase().contains("input") || text.toLowerCase().contains("validation")) {
             return "INPUT_VALIDATION";
