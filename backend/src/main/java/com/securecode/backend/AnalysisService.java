@@ -15,12 +15,17 @@ import java.util.Map;
 @Service
 public class AnalysisService {
 
-    @Value("${openai.api.key:}")
+    @Value("${ai.api.key:}")
     private String apiKey;
+
+    @Value("${ai.api.model:gpt-4o-mini}")
+    private String modelName;
+
+    @Value("${ai.api.url:https://api.openai.com/v1/chat/completions}")
+    private String apiUrl;
 
     private final RestTemplate restTemplate = new RestTemplate();
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private static final String CHAT_URL = "https://api.openai.com/v1/chat/completions";
 
     private static final String SYSTEM_PROMPT = """
             You are SecureCode, an AI security assistant.
@@ -50,7 +55,7 @@ public class AnalysisService {
         }
 
         Map<String, Object> requestBody = Map.of(
-                "model", "gpt-4o-mini",
+                "model", modelName,
                 "messages", List.of(
                         Map.of("role", "system", "content", SYSTEM_PROMPT),
                         Map.of("role", "user", "content",
@@ -64,7 +69,7 @@ public class AnalysisService {
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBody, headers);
 
         try {
-            Map<String, Object> response = restTemplate.postForObject(CHAT_URL, entity, Map.class);
+            Map<String, Object> response = restTemplate.postForObject(apiUrl, entity, Map.class);
             List<Map<String, Object>> choices = (List<Map<String, Object>>) response.get("choices");
             Map<String, Object> message = (Map<String, Object>) choices.get(0).get("message");
             String content = (String) message.get("content");

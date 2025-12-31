@@ -47,3 +47,10 @@
 - Learned to manage async UI states for AI responses
 - Handled refusal and error cases gracefully in the UI
 - Understood how UX impacts trust in AI security tools
+
+## Hour 8 — Demo Optimization & Example Scenarios
+
+- Added predefined insecure code examples for faster demos
+- Learned how product UX impacts hackathon judging
+- Improved clarity by showing secure vs insecure patterns
+- Designed predictable demo flows for AI systems

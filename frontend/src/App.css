@@ -127,9 +127,68 @@ button:disabled {
   text-transform: uppercase;
 }
 
-.status-secure { background-color: rgba(34, 197, 94, 0.2); color: var(--accent-green); }
-.status-insecure { background-color: rgba(239, 68, 68, 0.2); color: var(--accent-red); }
-.status-refusal { background-color: rgba(245, 158, 11, 0.2); color: var(--accent-amber); }
+.status-secure {
+  background-color: rgba(34, 197, 94, 0.2);
+  color: var(--accent-green);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.status-insecure {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: var(--accent-red);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.status-refusal {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: var(--accent-amber);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.status-risk {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: var(--accent-amber);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.examples-section {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.example-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.example-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-example {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid #334155;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-example:hover {
+  background-color: #334155;
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
 
 .result-section {
   margin-bottom: 1.5rem;
@@ -173,7 +232,7 @@ button:disabled {
   display: inline-block;
   width: 1.5rem;
   height: 1.5rem;
-  border: 3px solid rgba(255,255,255,.3);
+  border: 3px solid rgba(255, 255, 255, .3);
   border-radius: 50%;
   border-top-color: #fff;
   animation: spin 1s ease-in-out infinite;
@@ -181,7 +240,9 @@ button:disabled {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .error-message {
