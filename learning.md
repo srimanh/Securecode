@@ -40,3 +40,10 @@
 - Learned to use "Safe by Design" principles by forcing conditional language via system prompts
 - Integrated input validation to defend the tool against token bombs and malicious queries
 - Understood why security tools must prioritize "refusal over guessing" to maintain user trust
+
+## Hour 7 — Frontend & Backend Integration
+
+- Connected React frontend to SecureCode analysis API
+- Learned to manage async UI states for AI responses
+- Handled refusal and error cases gracefully in the UI
+- Understood how UX impacts trust in AI security tools
