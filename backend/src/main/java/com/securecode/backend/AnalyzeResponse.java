@@ -13,6 +13,9 @@ public class AnalyzeResponse {
     private String explanation;
     private String policyCategory;
     private String safeAlternative;
+    private String risk;
+    private String exploit;
+    private String severity;
     private String message;
 
     public static AnalyzeResponse refusal(String message) {

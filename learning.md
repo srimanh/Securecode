@@ -54,3 +54,19 @@
 - Learned how product UX impacts hackathon judging
 - Improved clarity by showing secure vs insecure patterns
 - Designed predictable demo flows for AI systems
+
+## Hour 9 — Explanation Quality & Developer Education
+
+- Learned how structured explanations improve trust in security tools
+- Designed mentor-style AI responses instead of warning-only outputs
+- Connected vulnerabilities to real-world impact and exploitation
+- Improved refusal messaging to reinforce responsible AI behavior
+
+
+## Hour 10 — Stability & Production Polish
+
+- Implemented backend logging without exposing sensitive data
+- Added global error handling for predictable system behavior
+- Improved frontend copy and UI consistency
+- Learned how polish influences trust in AI tools
+

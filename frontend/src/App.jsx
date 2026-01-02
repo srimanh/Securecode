@@ -63,8 +63,8 @@ function App() {
   return (
     <div className="container">
       <header>
-        <h1>SecureCode Analysis</h1>
-        <p className="description">AI-powered security policy enforcement for your code</p>
+        <h1>SecureCode <span className="title-alt">Engine</span></h1>
+        <p className="description">Enterprise-grade security policy enforcement for internal code review</p>
       </header>
 
       <main className="analysis-container">
@@ -91,13 +91,13 @@ function App() {
             </div>
           </div>
           <div className="actions">
-            <button onClick={() => handleAnalyze()} disabled={loading || !code.trim()}>
+            <button className="btn-primary" onClick={() => handleAnalyze()} disabled={loading || !code.trim()}>
               {loading ? (
                 <>
                   <span className="loading"></span>
-                  Analyzing...
+                  Analyzing Logic...
                 </>
-              ) : 'Analyze Code'}
+              ) : 'Run SecureCode Analysis'}
             </button>
           </div>
         </section>
@@ -121,6 +121,11 @@ function App() {
                 <span className={`status-badge ${getStatusClass()}`}>
                   {getStatusText()}
                 </span>
+                {result.severity && !result.message && (
+                  <span className={`sev-badge sev-${result.severity.toLowerCase()}`}>
+                    Severity: {result.severity}
+                  </span>
+                )}
                 <span className="policy-category">
                   {result.policyCategory || (result.message ? 'Out of Scope' : 'N/A')}
                 </span>
@@ -135,11 +140,18 @@ function App() {
                 </div>
               ) : (
                 <>
-                  {!result.isSecure && (
+                  <div className="result-section">
+                    <div className="section-title">Issue Isolated</div>
+                    <div className="section-content" style={{ color: result.isSecure ? 'var(--accent-green)' : 'var(--accent-red)', fontWeight: 600 }}>
+                      {result.issue}
+                    </div>
+                  </div>
+
+                  {result.risk && (
                     <div className="result-section">
-                      <div className="section-title">Issue Isolated</div>
-                      <div className="section-content" style={{ color: 'var(--accent-red)', fontWeight: 600 }}>
-                        {result.issue}
+                      <div className="section-title">Risk Assessment</div>
+                      <div className="section-content risk">
+                        {result.risk}
                       </div>
                     </div>
                   )}
@@ -150,6 +162,15 @@ function App() {
                       {result.explanation}
                     </div>
                   </div>
+
+                  {result.exploit && result.exploit !== "None" && (
+                    <div className="result-section">
+                      <div className="section-title">Exploit Scenario</div>
+                      <div className="section-content exploit">
+                        {result.exploit}
+                      </div>
+                    </div>
+                  )}
 
                   {result.safeAlternative && (
                     <div className="result-section">

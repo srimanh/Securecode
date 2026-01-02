@@ -13,13 +13,19 @@ public class AnalysisResult {
     private String explanation;
     private String policyCategory;
     private String safeAlternative;
+    private String risk;
+    private String exploit;
+    private String severity;
 
     public static AnalysisResult refusal() {
         return new AnalysisResult(
                 true,
                 "Refused",
-                "Not covered by provided security guidelines.",
+                "This input is not covered by the current security guidelines. SecureCode avoids speculative advice to ensure accuracy.",
                 "NONE",
-                "Consult original documentation for uncovered scenarios.");
+                "Consult original documentation for uncovered scenarios.",
+                "None",
+                "None",
+                "LOW");
     }
 }
