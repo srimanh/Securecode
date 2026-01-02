@@ -24,8 +24,15 @@ public class AnalysisService {
     @Value("${ai.api.url:https://api.openai.com/v1/chat/completions}")
     private String apiUrl;
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper = new ObjectMapper();
+
+    public AnalysisService() {
+        org.springframework.http.client.SimpleClientHttpRequestFactory factory = new org.springframework.http.client.SimpleClientHttpRequestFactory();
+        factory.setConnectTimeout(10000);
+        factory.setReadTimeout(60000); // 60s for reasoning models
+        this.restTemplate = new RestTemplate(factory);
+    }
 
     private static final String SYSTEM_PROMPT = """
             You are SecureCode, a Developer Educator & Security Communicator.
@@ -70,8 +77,7 @@ public class AnalysisService {
                 "messages", List.of(
                         Map.of("role", "system", "content", SYSTEM_PROMPT),
                         Map.of("role", "user", "content",
-                                "CONTEXT:\\n" + contextBuilder.toString() + "\\n\\nUSER QUERY: " + query)),
-                "response_format", Map.of("type", "json_object"));
+                                "CONTEXT:\\n" + contextBuilder.toString() + "\\n\\nUSER QUERY: " + query)));
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -94,10 +100,22 @@ public class AnalysisService {
             }
 
             System.out.println("[SECURECODE] AI call successful (" + duration + "ms)");
-            return objectMapper.readValue(content, AnalysisResult.class);
+            String cleanedContent = extractJson(content);
+            return objectMapper.readValue(cleanedContent, AnalysisResult.class);
         } catch (Exception e) {
             System.err.println("[SECURECODE] Critical AI API Error: " + e.getMessage());
             throw new RuntimeException("AI_API_FAILURE");
         }
+    }
+
+    private String extractJson(String content) {
+        if (content == null)
+            return "{}";
+        int firstBrace = content.indexOf('{');
+        int lastBrace = content.lastIndexOf('}');
+        if (firstBrace != -1 && lastBrace != -1 && lastBrace > firstBrace) {
+            return content.substring(firstBrace, lastBrace + 1);
+        }
+        return content;
     }
 }

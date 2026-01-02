@@ -1,138 +1,89 @@
-# 🛡️ SecureCode Knowledge Base
-### AI-Powered Secure Coding Assistant for Developers
+# 🛡️ SecureCode Engine
+### Enterprise-Grade Security Policy Enforcement for Code Reviews
 
-SecureCode Knowledge Base is an AI-driven system that helps developers understand, identify, and fix insecure coding practices by grounding responses in verified security guidelines and internal policies.
+SecureCode Engine is a production-aware AI system built to solve the **"Security Knowledge Gap"**. While generic AI assistants often hallucinate or suggest risky code, SecureCode grounds every analysis in verified **OWASP Security Policies** using a Retrieval-Augmented Generation (RAG) pipeline.
 
-Unlike generic AI code assistants, SecureCode does **not blindly generate code**.  
-It evaluates code against **security rules**, explains risks in plain language, and suggests safer alternatives — all while preventing hallucinated or dangerous advice.
-
----
-
-## 🚨 Problem Statement
-
-Developers frequently write insecure code because:
-- Security documentation is lengthy and ignored
-- Unsafe patterns are copied from the internet
-- Teams lack clear explanations of *why* code is insecure
-
-This leads to vulnerabilities such as:
-- SQL Injection
-- Hardcoded secrets
-- Insecure authentication logic
-- Improper input validation
+It transforms raw security findings into clear, educational reports for developers, ensuring that security advice is accurate, compliant, and mentor-like.
 
 ---
 
-## 💡 Solution Overview
+## 🚨 The Problem
+Generic AI assistants are "probabilistic" — they guess what code should look like. In security, guessing is dangerous.
+- **Hallucinations**: AI suggesting "completely secure" code that actually has a zero-day.
+- **Speculative Advice**: Providing security tips without referencing actual compliance standards.
+- **Fear-Mongering**: Jargon-heavy warnings that developers ignore.
 
-SecureCode acts as an **AI security reviewer** that:
-- Analyzes code snippets or security-related questions
-- Matches them against trusted security documents (OWASP, internal policies)
-- Explains vulnerabilities clearly
-- Suggests **safe, policy-compliant alternatives**
-- Refuses to answer when the information is not grounded in policy
+---
+
+## 💡 The Solution: Grounded RAG
+SecureCode acts as an **AI Security Reviewer** that only speaks when it has the facts.
+- **Retrieval-Augmented Generation (RAG)**: The system first "reads" your internal security docs before the AI even sees your code.
+- **Hard Similarity Gate**: If the code doesn't match a known security category, the system refuses to speculate.
+- **Educational Explanations**: A standardized 4-part template: "What's the issue", "Why it's risky", "How it can be exploited", and "Safer alternative".
+
+---
+
+## 🏗️ Architecture Flow
+```text
+User Input (Code Snippet)
+   ↓
+Embedding Generation (Semantic Vector)
+   ↓
+Policy Retrieval (Vector search in OWASP Docs)
+   ↓
+Safety & Similarity Check (Similarity >= 0.7?)
+   ↓
+AI Analysis (Grounding code in retrieved context)
+   ↓
+Structured JSON Response (Mapped to UI)
+```
 
 ---
 
 ## 🧠 Key Features
 
-- **Policy-Grounded Answers**  
-  Responses are generated strictly from approved security documents.
+- **Reasoning-Capable AI**  
+  Uses **Olmo 3.1 32B Think** models to "think" through logic before providing a verdict.
+  
+- **4-Part Reporting Template**  
+  Every finding includes: Issue Isolation, Risk Assessment, Exploit Scenario, and a Safer Alternative.
 
-- **Secure vs Insecure Pattern Detection**  
-  Identifies risky coding patterns and explains why they are dangerous.
+- **Severity Awareness**  
+  Automatic mapping of vulnerabilities to **HIGH**, **MEDIUM**, or **LOW** severity based on policy category.
 
-- **Safe Prompt Guardrails**  
-  Prevents hallucinated or unsafe security recommendations.
-
-- **Developer-Friendly Explanations**  
-  Clear, junior-friendly reasoning instead of jargon-heavy security warnings.
-
-- **Fallback Safety Logic**  
-  If no policy applies, the system explicitly responds with  
-  _“This information is not available in the provided security guidelines.”_
+- **Safe Refusal Logic**  
+  Explicitly avoids speculative advice with a trust-reinforcing refusal:  
+  _"This input is not covered by current guidelines. SecureCode avoids speculative advice to ensure accuracy."_
 
 ---
 
-## 🏗️ System Architecture
+## ⚠️ Limitations (Honesty Matters)
 
-**Backend (Spring Boot 3)**
-- REST APIs for code analysis and Q&A
-- PDF ingestion and document chunking
-- Secure prompt orchestration
-
-**AI Layer**
-- Retrieval-Augmented Generation (RAG)
-- Policy-constrained system prompts
-- Code-aware context injection
-
-**Frontend (Optional Extension)**
-- Simple UI to submit code or questions
-- Highlighted security findings
-- Policy citation display
+- **V1 Categorization**: Currently focused on OWASP Top 10 (Injection, Secrets, Input Validation).
+- **Advisory Only**: This is an educational and advisory tool, not a replacement for a formal security audit.
+- **Static Context**: The engine is as smart as the documents you provide it in `/security-docs`.
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Backend
-- **Java 21**
-- **Spring Boot 3**
-- Spring Web
-- Spring Validation
+- **Java 17 / Spring Boot 3**
+- **OpenAI Embeddings**: For semantic code representation.
+- **In-Memory Vector Store**: Fast, lightweight policy retrieval.
 
-### AI & Processing
-- LLM API (OpenAI / compatible)
-- Embeddings for semantic search
-- Vector storage (pluggable)
-
-### Data & Documents
-- PDF security guidelines (OWASP, internal rules)
-- Chunked and indexed for retrieval
+### Frontend
+- **React / Vite**: Modern, responsive dashboard.
+- **Vanilla CSS**: Premium dark-mode aesthetics with glassmorphism.
 
 ---
 
-## 🔐 Safety & Ethics
-
-- The system does **not execute code**
-- The system does **not guarantee vulnerability-free code**
-- All responses are advisory and policy-based
-- Designed to reduce, not replace, human security review
-
----
-
-## 📌 Use Cases
-
-- Developers checking if code follows security best practices
-- Teams onboarding junior engineers securely
-- Internal security compliance guidance
-- Secure code education and awareness
-
----
-
-## 🚀 Future Enhancements
-
-- Multi-language code support
-- IDE plugin integration
-- Violation severity scoring
-- Secure refactoring suggestions
-- Audit logs for compliance teams
-
----
-
-## 🤝 Contribution
-
-Contributions are welcome.
-
-1. Fork the repository  
-2. Create a feature branch  
-3. Commit changes with clear messages  
-4. Submit a pull request  
-
-All contributions must follow secure coding standards.
+## 🚀 Future Roadmap
+- [ ] Multi-file codebase analysis.
+- [ ] IDE Extension (VS Code / IntelliJ).
+- [ ] Automated ticket creation (Jira/GitHub) for detected vulnerabilities.
 
 ---
 
 ## 📄 License
-
 This project is licensed under the **MIT License**.
