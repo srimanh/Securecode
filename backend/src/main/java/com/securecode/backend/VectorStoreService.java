@@ -24,10 +24,17 @@ public class VectorStoreService {
             results.add(new RetrievalResult(entry.getKey(), score));
         }
 
-        return results.stream()
+        List<RetrievalResult> sortedResults = results.stream()
                 .sorted((a, b) -> Double.compare(b.getSimilarityScore(), a.getSimilarityScore()))
                 .limit(topK)
                 .collect(Collectors.toList());
+
+        System.out.println("Search Results:");
+        for (RetrievalResult r : sortedResults) {
+            System.out.println("- Score: " + r.getSimilarityScore() + ", Category: " + r.getChunk().getCategory());
+        }
+
+        return sortedResults;
     }
 
     private double cosineSimilarity(float[] vectorA, float[] vectorB) {
@@ -39,6 +46,8 @@ public class VectorStoreService {
             normA += Math.pow(vectorA[i], 2);
             normB += Math.pow(vectorB[i], 2);
         }
+        if (normA == 0 || normB == 0)
+            return 0.0;
         return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
     }
 
