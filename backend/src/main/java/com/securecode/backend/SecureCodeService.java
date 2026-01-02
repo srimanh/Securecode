@@ -21,10 +21,6 @@ public class SecureCodeService {
     private static final double SIMILARITY_THRESHOLD = 0.7;
     private static final int MAX_INPUT_LENGTH = 5000;
 
-    private static final String MOCK_SQL = "String query = \"SELECT * FROM users WHERE id = \" + userId;";
-    private static final String MOCK_SECRET = "String apiKey = \"sk_test_123456\";";
-    private static final String MOCK_VALIDATION = "int age = Integer.parseInt(request.getParameter(\"age\"));";
-
     public AnalyzeResponse analyze(AnalyzeRequest request) {
         String input = request.getInput();
         System.out.println("[SECURECODE] Analysis request received. Length: " + (input != null ? input.length() : 0));
@@ -32,27 +28,6 @@ public class SecureCodeService {
         // 1. Input Validation
         if (input == null || input.trim().isEmpty()) {
             return AnalyzeResponse.refusal("Input cannot be empty.");
-        }
-
-        // 1b. Mock Demo Logic (Hour 10)
-        if (input.contains(MOCK_SQL)) {
-            System.out.println("[SECURECODE] Serving Mock Response: SQL Injection");
-            return new AnalyzeResponse(false, "SQL Injection", "User input is directly concatenated into a SQL string.",
-                    "Injection", "Use PreparedStatement with parameter binding.", "Serious security risk detected.",
-                    "Attacker could steal or delete data.", "HIGH", null);
-        }
-        if (input.contains(MOCK_SECRET)) {
-            System.out.println("[SECURECODE] Serving Mock Response: Hardcoded Secret");
-            return new AnalyzeResponse(false, "Hardcoded Secret", "Sensitive credentials found in source code.",
-                    "Secrets", "Use environment variables or a Secret Manager.", "Credential leak risk.",
-                    "Attacker could gain unauthorized API access.", "HIGH", null);
-        }
-        if (input.contains(MOCK_VALIDATION)) {
-            System.out.println("[SECURECODE] Serving Mock Response: Missing Validation");
-            return new AnalyzeResponse(false, "Insecure Parsing",
-                    "Raw request data parsed without range or type validation.", "Input Validation",
-                    "Implement strict schema validation and range checks.", "Data integrity risk.",
-                    "Potential DoS or logic bypass via crafted inputs.", "MEDIUM", null);
         }
 
         if (input.length() > MAX_INPUT_LENGTH) {
@@ -67,14 +42,24 @@ public class SecureCodeService {
         // 3. Retrieve relevant policies
         List<VectorStoreService.RetrievalResult> allResults = vectorStoreService.search(queryVector, 5);
 
-        // 4. Apply Hard Similarity Gate
+        // 4. Apply Similarity Gate with Fallback (Lens)
         List<PolicyChunk> filteredPolicies = allResults.stream()
                 .filter(r -> r.getSimilarityScore() >= SIMILARITY_THRESHOLD)
                 .map(VectorStoreService.RetrievalResult::getChunk)
                 .collect(Collectors.toList());
 
+        // Fallback: If nothing matched but we have results, take top 2 for context
+        // anyway
+        if (filteredPolicies.isEmpty() && !allResults.isEmpty()) {
+            System.out.println("[SECURECODE] Low similarity, using best-effort context for 'real AI' analysis.");
+            filteredPolicies = allResults.stream()
+                    .limit(2)
+                    .map(VectorStoreService.RetrievalResult::getChunk)
+                    .collect(Collectors.toList());
+        }
+
         if (filteredPolicies.isEmpty()) {
-            System.out.println("[SECURECODE] Refusal: Low similarity context");
+            System.out.println("[SECURECODE] Refusal: No policy context available.");
             return AnalyzeResponse.refusal(
                     "This input is not covered by the current security guidelines. SecureCode avoids speculative advice to ensure accuracy.");
         }

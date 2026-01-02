@@ -1,5 +1,6 @@
 package com.securecode.backend;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AnalysisResult {
+    @JsonProperty("isSecure")
     private boolean isSecure;
     private String issue;
     private String explanation;

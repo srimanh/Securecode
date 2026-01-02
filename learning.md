@@ -70,3 +70,11 @@
 - Improved frontend copy and UI consistency
 - Learned how polish influences trust in AI tools
 
+## Hour 11 — Documentation & System Storytelling
+
+- Learned how clear documentation increases project credibility
+- Explained AI architecture and safety decisions in simple terms
+- Prepared resume-ready project descriptions
+- Understood the importance of stating limitations honestly
+
+
